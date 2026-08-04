@@ -5,7 +5,7 @@
   **A strategic 6×6 board game of pattern and disruption.**  
   *Play against an intelligent AI opponent powered by Minimax with Alpha-Beta Pruning.*
 
-  [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Play_Now-6366f1?style=for-the-badge)](https://order-chaos-ai-engine.vercel.app)
+  [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Play_Now-6366f1?style=for-the-badge)](https://order-chaos-ai-engine.vercel.app/)
   [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/A-P-S-Bhaidav/order-chaos-ai-engine)
 
 </div>
