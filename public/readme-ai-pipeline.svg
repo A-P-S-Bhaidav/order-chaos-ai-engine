@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 370" width="100%" height="100%">
+  <defs>
+    <linearGradient id="panelBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a1d" />
+      <stop offset="100%" stop-color="#10102a" />
+    </linearGradient>
+
+    <linearGradient id="headerBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="50%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#22d3ee" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    .font-sans { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace; }
+    .active-edge {
+      stroke-dasharray: 6 4;
+      animation: flowDash 1.8s linear infinite;
+    }
+    .cutoff-pulse {
+      animation: cutoffFade 2.5s ease-in-out infinite;
+    }
+    @keyframes flowDash {
+      to { stroke-dashoffset: -20; }
+    }
+    @keyframes cutoffFade {
+      0%, 100% { opacity: 0.95; }
+      50% { opacity: 0.35; }
+    }
+  </style>
+
+  <!-- Outer Frame -->
+  <rect width="1200" height="370" rx="16" fill="url(#panelBg)" stroke="#26264f" stroke-width="2" />
+
+  <!-- PANEL 1: ALPHA-BETA PRUNING TREE (Left) -->
+  <g transform="translate(24, 24)">
+    <rect x="0" y="0" width="560" height="322" rx="12" fill="#0d0d22" stroke="#25254d" stroke-width="1" />
+    <text x="20" y="30" fill="#e2e8f0" font-size="13" font-weight="800" letter-spacing="1" class="font-mono">
+      01 // MINIMAX TREE &amp; ALPHA-BETA CUTOFFS
+    </text>
+    <text x="415" y="30" fill="#34d399" font-size="11" font-weight="700" class="font-mono">
+      OPTIMAL PATH
+    </text>
+
+    <!-- Edges from Root (280, 72) to Depth 1 -->
+    <line x1="280" y1="88" x2="120" y2="150" stroke="#34d399" stroke-width="2.5" class="active-edge" />
+    <line x1="280" y1="88" x2="280" y2="150" stroke="#6366f1" stroke-width="1.5" />
+    <line x1="280" y1="88" x2="440" y2="150" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4 4" />
+
+    <!-- Edges from Left Depth 1 (120, 166) to Depth 2 -->
+    <line x1="120" y1="184" x2="65"  y2="246" stroke="#34d399" stroke-width="2" />
+    <line x1="120" y1="184" x2="175" y2="246" stroke="#475569" stroke-width="1.5" />
+
+    <!-- Edges from Center Depth 1 (280, 166) to Depth 2 -->
+    <line x1="280" y1="184" x2="235" y2="246" stroke="#6366f1" stroke-width="1.5" />
+    <line x1="280" y1="184" x2="325" y2="246" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4 4" />
+
+    <!-- Edges from Right Depth 1 (440, 166) to Depth 2 (Pruned) -->
+    <line x1="440" y1="184" x2="395" y2="246" stroke="#6366f1" stroke-width="1.5" />
+    <line x1="440" y1="184" x2="485" y2="246" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4 4" />
+
+    <!-- Cutoff Bars -->
+    <line x1="305" y1="210" x2="335" y2="222" stroke="#f87171" stroke-width="3" class="cutoff-pulse" />
+    <line x1="465" y1="210" x2="495" y2="222" stroke="#f87171" stroke-width="3" class="cutoff-pulse" />
+
+    <!-- Root Node: MAX (Order) -->
+    <rect x="215" y="54" width="130" height="34" rx="8" fill="#132a2e" stroke="#34d399" stroke-width="2" />
+    <text x="280" y="75" text-anchor="middle" fill="#34d399" font-size="11" font-weight="800" class="font-mono">MAX: +10,500</text>
+
+    <!-- Depth 1 Nodes: MIN (Chaos) -->
+    <rect x="65" y="150" width="110" height="34" rx="8" fill="#1f1638" stroke="#f472b6" stroke-width="1.5" />
+    <text x="120" y="171" text-anchor="middle" fill="#f472b6" font-size="11" font-weight="700" class="font-mono">MIN: +10,500</text>
+
+    <rect x="225" y="150" width="110" height="34" rx="8" fill="#1f1638" stroke="#f472b6" stroke-width="1.5" />
+    <text x="280" y="171" text-anchor="middle" fill="#f472b6" font-size="11" font-weight="700" class="font-mono">MIN: &lt;= +500</text>
+
+    <rect x="385" y="150" width="110" height="34" rx="8" fill="#1f1638" stroke="#f87171" stroke-width="1.5" />
+    <text x="440" y="171" text-anchor="middle" fill="#f87171" font-size="11" font-weight="700" class="font-mono">MIN: &lt;= -10</text>
+
+    <!-- Depth 2 Leaf Nodes -->
+    <rect x="25" y="246" width="80" height="30" rx="6" fill="#16233b" stroke="#34d399" stroke-width="1.5" />
+    <text x="65" y="265" text-anchor="middle" fill="#34d399" font-size="10" font-weight="700" class="font-mono">+10,500</text>
+
+    <rect x="135" y="246" width="80" height="30" rx="6" fill="#151530" stroke="#475569" stroke-width="1" />
+    <text x="175" y="265" text-anchor="middle" fill="#94a3b8" font-size="10" font-weight="700" class="font-mono">+12,200</text>
+
+    <rect x="195" y="246" width="80" height="30" rx="6" fill="#151530" stroke="#6366f1" stroke-width="1" />
+    <text x="235" y="265" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="700" class="font-mono">+500</text>
+
+    <rect x="285" y="246" width="80" height="30" rx="6" fill="#2a121f" stroke="#f87171" stroke-width="1" stroke-dasharray="3 3" />
+    <text x="325" y="265" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700" class="font-mono">PRUNED</text>
+
+    <rect x="355" y="246" width="80" height="30" rx="6" fill="#151530" stroke="#6366f1" stroke-width="1" />
+    <text x="395" y="265" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="700" class="font-mono">-10</text>
+
+    <rect x="445" y="246" width="80" height="30" rx="6" fill="#2a121f" stroke="#f87171" stroke-width="1" stroke-dasharray="3 3" />
+    <text x="485" y="265" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700" class="font-mono">PRUNED</text>
+
+    <!-- Footer Legend -->
+    <text x="20" y="304" fill="#64748b" font-size="10" class="font-mono">
+      CONDITION: IF (BETA &lt;= ALPHA) BREAK // ELIMINATES SUBOPTIMAL SUBTREES
+    </text>
+  </g>
+
+  <!-- PANEL 2: MOVE ORDERING HEATMAP & HEURISTIC WEIGHTS (Right) -->
+  <g transform="translate(604, 24)">
+    <rect x="0" y="0" width="572" height="322" rx="12" fill="#0d0d22" stroke="#25254d" stroke-width="1" />
+    <text x="20" y="30" fill="#e2e8f0" font-size="13" font-weight="800" letter-spacing="1" class="font-mono">
+      02 // CENTER-PROXIMITY ORDERING &amp; WINDOW WEIGHTS
+    </text>
+
+    <!-- 6x6 Priority Heatmap Mini Grid (Left inside Panel 2) -->
+    <g transform="translate(24, 54)">
+      <text x="0" y="0" fill="#94a3b8" font-size="10" font-weight="700" class="font-mono">MANHATTAN PRIORITY: |r-2.5| + |c-2.5|</text>
+      
+      <!-- 6x6 cells (34x34, gap 4) -->
+      <g transform="translate(0, 14)">
+        <!-- Outer ring corners & edges -->
+        <rect x="0"   y="0"   width="224" height="224" rx="8" fill="#131332" stroke="#2d2d5a" />
+        <!-- Ring 2 (r=1..4, c=1..4) -->
+        <rect x="38"  y="38"  width="148" height="148" rx="6" fill="#1e1b4b" stroke="#4f46e5" stroke-width="1.2" />
+        <!-- Core 2x2 Center (r=2..3, c=2..3) -->
+        <rect x="76"  y="76"  width="72"  height="72"  rx="6" fill="#312e81" stroke="#22d3ee" stroke-width="2" />
+
+        <text x="112" y="108" text-anchor="middle" fill="#22d3ee" font-size="11" font-weight="800" class="font-mono">TIER 1</text>
+        <text x="112" y="124" text-anchor="middle" fill="#e2e8f0" font-size="9" class="font-mono">d = 1.0</text>
+
+        <text x="112" y="58" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="700" class="font-mono">TIER 2 (d = 2.0 - 3.0)</text>
+        <text x="112" y="24" text-anchor="middle" fill="#64748b" font-size="10" font-weight="700" class="font-mono">TIER 3 (d = 4.0 - 5.0)</text>
+      </g>
+    </g>
+
+    <!-- Heuristic Window Scoring Bars (Right inside Panel 2) -->
+    <g transform="translate(278, 54)">
+      <text x="0" y="0" fill="#94a3b8" font-size="10" font-weight="700" class="font-mono">5-CELL WINDOW EVALUATION SCALE</text>
+
+      <!-- 5 in a row -->
+      <g transform="translate(0, 20)">
+        <text x="0" y="12" fill="#34d399" font-size="11" font-weight="700" class="font-mono">5 IDENTICAL</text>
+        <text x="200" y="12" fill="#34d399" font-size="11" font-weight="700" class="font-mono">+100,000</text>
+        <rect x="0" y="18" width="268" height="8" rx="4" fill="#151535" />
+        <rect x="0" y="18" width="268" height="8" rx="4" fill="#34d399" />
+      </g>
+
+      <!-- 4 in a row + 1 empty -->
+      <g transform="translate(0, 62)">
+        <text x="0" y="12" fill="#22d3ee" font-size="11" font-weight="700" class="font-mono">4 SAME + 1 EMPTY</text>
+        <text x="205" y="12" fill="#22d3ee" font-size="11" font-weight="700" class="font-mono">+10,000</text>
+        <rect x="0" y="18" width="268" height="8" rx="4" fill="#151535" />
+        <rect x="0" y="18" width="210" height="8" rx="4" fill="#22d3ee" />
+      </g>
+
+      <!-- 3 in a row + 2 empty -->
+      <g transform="translate(0, 104)">
+        <text x="0" y="12" fill="#a855f7" font-size="11" font-weight="700" class="font-mono">3 SAME + 2 EMPTY</text>
+        <text x="225" y="12" fill="#a855f7" font-size="11" font-weight="700" class="font-mono">+500</text>
+        <rect x="0" y="18" width="268" height="8" rx="4" fill="#151535" />
+        <rect x="0" y="18" width="145" height="8" rx="4" fill="#a855f7" />
+      </g>
+
+      <!-- 2 in a row + 3 empty -->
+      <g transform="translate(0, 146)">
+        <text x="0" y="12" fill="#f59e0b" font-size="11" font-weight="700" class="font-mono">2 SAME + 3 EMPTY</text>
+        <text x="232" y="12" fill="#f59e0b" font-size="11" font-weight="700" class="font-mono">+50</text>
+        <rect x="0" y="18" width="268" height="8" rx="4" fill="#151535" />
+        <rect x="0" y="18" width="85" height="8" rx="4" fill="#f59e0b" />
+      </g>
+
+      <!-- Mixed Window (Chaos Disruption) -->
+      <g transform="translate(0, 188)">
+        <text x="0" y="12" fill="#f472b6" font-size="11" font-weight="700" class="font-mono">MIXED (X &amp; O)</text>
+        <text x="165" y="12" fill="#f472b6" font-size="11" font-weight="700" class="font-mono">-10 (CHAOS BONUS)</text>
+        <rect x="0" y="18" width="268" height="8" rx="4" fill="#151535" />
+        <rect x="0" y="18" width="120" height="8" rx="4" fill="#f472b6" />
+      </g>
+    </g>
+
+    <text x="24" y="304" fill="#64748b" font-size="10" class="font-mono">
+      WINDOW COUNT: 12 HORIZONTAL + 12 VERTICAL + 8 DIAGONAL = 32 ACTIVE VECTORS
+    </text>
+  </g>
+</svg>
